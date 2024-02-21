@@ -1,2 +1,1 @@
-# majesticalliance.github.io
-...
+# Majestic Alliance
