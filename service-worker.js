@@ -1,11 +1,11 @@
 const CACHE_NAME = 'Majestic Alliance';
 const urlsToCache = [
-    '/',
-    '/index.html',
-    '/styles/main.css',
-    '/scripts/main.js',
-    '/images/icon.png',
-    '/images/icon-512.png'
+    '/majesticalliance.github.io/',
+    '/majesticalliance.github.io/index.html',
+    '/majesticalliance.github.io/styles/main.css',
+    '/majesticalliance.github.io/scripts/main.js',
+    '/majesticalliance.github.io/images/icon.png',
+    '/majesticalliance.github.io/images/icon-512.png'
 ];
 
 self.addEventListener('install', event => {
