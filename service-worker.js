@@ -1,29 +1,40 @@
-function fetchAndCache(request) {
-    if (request.url.startsWith('chrome-extension://')) {
-        return fetch(request);
-    }
+const CACHE_NAME = 'Majestic Alliance';
+const urlsToCache = [
+    '/',
+    '/majesticalliance.github.io/index.html',
+    '/majesticalliance.github.io/styles/main.css',
+    '/majesticalliance.github.io/scripts/main.js',
+    '/majesticalliance.github.io/images/icon-144.png',
+    '/majesticalliance.github.io/images/icon-192.png',
+    '/majesticalliance.github.io/images/icon-196.png',
+    '/majesticalliance.github.io/images/icon-512.png'
+];
 
-    return fetch(request)
-        .then(response => {
-            if (!response || response.status !== 200 || response.type !== 'basic') {
-                return response;
+self.addEventListener('install', event => {
+    event.waitUntil(
+    caches.open(CACHE_NAME)
+        .then(cache => cache.addAll(urlsToCache))
+    );
+});
+
+self.addEventListener('fetch', event => {
+    event.respondWith(
+    caches.match(event.request)
+        .then(response => response || fetch(event.request))
+    );
+});
+
+self.addEventListener('activate', event => {
+    const cacheWhitelist = [CACHE_NAME];
+
+    event.waitUntil(
+    caches.keys()
+        .then(cacheNames => Promise.all(
+        cacheNames.map(cacheName => {
+            if (!cacheWhitelist.includes(cacheName)) {
+            return caches.delete(cacheName);
             }
-
-            const responseToCache = response.clone();
-
-            return caches.open(CACHE_NAME)
-                .then(cache => cache.put(request, responseToCache))
-                .then(() => {
-                    console.log('Cached:', request.url);
-                    return response;
-                })
-                .catch(error => {
-                    console.error('Caching failed:', request.url, error);
-                    return response;
-                });
         })
-        .catch(error => {
-            console.error('Fetch failed:', request.url, error);
-            return response;
-        });
-}
+        ))
+    );
+});
