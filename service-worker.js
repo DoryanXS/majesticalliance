@@ -1,41 +1,57 @@
-const CACHE_NAME = 'Majestic Alliance';
+const CACHE_NAME = 'Majestic-Alliance';
 const urlsToCache = [
-    '/majesticalliance.github.io/',
-    '/majesticalliance.github.io/index.html',
-    '/majesticalliance.github.io/styles/main.css',
-    '/majesticalliance.github.io/scripts/main.js',
-    '/majesticalliance.github.io/images/icon.png',
-    '/majesticalliance.github.io/images/icon-144.png',
-    '/majesticalliance.github.io/images/icon-196.png',
-    '/majesticalliance.github.io/images/icon-512.png'
+    './',
+    './index.html',
+    './styles/main.css',
+    './scripts/main.js',
+    './images/icon-144.png',
+    './images/icon-192.png',
+    './images/icon-196.png',
+    './images/icon-512.png'
 ];
 
 self.addEventListener('install', event => {
     event.waitUntil(
-    caches.open(CACHE_NAME)
-        .then(cache => cache.addAll(urlsToCache))
+        caches.open(CACHE_NAME)
+            .then(cache => cache.addAll(urlsToCache))
+            .catch(error => console.error('Cache installation failed:', error))
     );
 });
 
 self.addEventListener('fetch', event => {
     event.respondWith(
-    caches.match(event.request)
-        .then(response => response || fetch(event.request))
+        caches.match(event.request)
+            .then(response => response || fetchAndCache(event.request))
     );
 });
+
+function fetchAndCache(request) {
+    return fetch(request)
+        .then(response => {
+            if (!response || response.status !== 200 || response.type !== 'basic') {
+                return response;
+            }
+
+            const responseToCache = response.clone();
+
+            caches.open(CACHE_NAME)
+                .then(cache => cache.put(request, responseToCache));
+
+            return response;
+        });
+}
 
 self.addEventListener('activate', event => {
     const cacheWhitelist = [CACHE_NAME];
 
     event.waitUntil(
-    caches.keys()
-        .then(cacheNames => Promise.all(
-        cacheNames.map(cacheName => {
-            if (!cacheWhitelist.includes(cacheName)) {
-            return caches.delete(cacheName);
-            }
-        })
-        ))
+        caches.keys()
+            .then(cacheNames => Promise.all(
+                cacheNames.map(cacheName => {
+                    if (!cacheWhitelist.includes(cacheName)) {
+                        return caches.delete(cacheName);
+                    }
+                })
+            ))
     );
 });
-
