@@ -30,4 +30,8 @@
     "orientation": "portrait",
     "lang": "es",
     "prefer_related_applications": false,
+        "serviceworker": {
+        "src": "/majesticalliance.github.io/service-worker.js",
+        "scope": "/"
+    }
 }
