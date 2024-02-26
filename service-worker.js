@@ -14,6 +14,7 @@ self.addEventListener('install', event => {
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then(cache => cache.addAll(urlsToCache))
+            .then(() => console.log('Cache installation successful'))
             .catch(error => console.error('Cache installation failed:', error))
     );
 });
@@ -34,9 +35,19 @@ function fetchAndCache(request) {
 
             const responseToCache = response.clone();
 
-            caches.open(CACHE_NAME)
-                .then(cache => cache.put(request, responseToCache));
-
+            return caches.open(CACHE_NAME)
+                .then(cache => cache.put(request, responseToCache))
+                .then(() => {
+                    console.log('Cached:', request.url);
+                    return response;
+                })
+                .catch(error => {
+                    console.error('Caching failed:', request.url, error);
+                    return response;
+                });
+        })
+        .catch(error => {
+            console.error('Fetch failed:', request.url, error);
             return response;
         });
 }
@@ -53,5 +64,7 @@ self.addEventListener('activate', event => {
                     }
                 })
             ))
+            .then(() => console.log('Cache cleanup successful'))
+            .catch(error => console.error('Cache cleanup failed:', error))
     );
 });
