@@ -1,4 +1,4 @@
-const CACHE_NAME = 'Majestic Alliance';
+const CACHE_NAME = 'Majestic-Alliance';
 const urlsToCache = [
     '/majesticalliance.github.io/',
     '/majesticalliance.github.io/index.html',
