@@ -12,8 +12,10 @@ const urlsToCache = [
 
 self.addEventListener('install', event => {
     event.waitUntil(
-    caches.open(CACHE_NAME)
-        .then(cache => cache.addAll(urlsToCache))
+        caches.open(CACHE_NAME)
+            .then(cache => cache.addAll(urlsToCache))
+            .then(() => console.log('Cache installation successful'))
+            .catch(error => console.error('Cache installation failed:', error))
     );
 });
 
