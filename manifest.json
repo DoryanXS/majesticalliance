@@ -1,7 +1,7 @@
 {
     "name": "Majestic Alliance",
     "short_name": "MA",
-    "description": "Morales Ramirez Doryan Ivan - Progresive Web Aplication",
+    "description": "Progressive Web Application by Morales Ramirez Doryan Ivan",
     "start_url": "/majesticalliance.github.io/index.html",
     "display": "fullscreen",
     "background_color": "#f33621",
@@ -14,7 +14,7 @@
             "purpose": "maskable"
         },
         {
-            "src": "/doryanxs.github.io/majesticalliance.github.io/icon.png",
+            "src": "/doryanxs.github.io/majesticalliance.github.io/icon-192.png",
             "sizes": "192x192",
             "type": "image/png",
             "purpose": "maskable"
