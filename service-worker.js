@@ -5,6 +5,8 @@ const urlsToCache = [
     '/majesticalliance.github.io/styles/main.css',
     '/majesticalliance.github.io/scripts/main.js',
     '/majesticalliance.github.io/images/icon.png',
+    '/majesticalliance.github.io/images/icon-144.png',
+    '/majesticalliance.github.io/images/icon-196.png',
     '/majesticalliance.github.io/images/icon-512.png'
 ];
 
