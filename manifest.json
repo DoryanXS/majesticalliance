@@ -1,7 +1,7 @@
 {
     "name": "Majestic Alliance",
     "short_name": "MA",
-    "description": "Progressive Web Application by Morales Ramirez Doryan Ivan",
+    "description": "Progressive Web Application by Doryan Morales",
     "start_url": "/",
     "display": "fullscreen",
     "background_color": "#f33621",
@@ -30,8 +30,4 @@
     "orientation": "portrait",
     "lang": "es",
     "prefer_related_applications": false,
-    "serviceworker": {
-        "src": "/majesticalliance.github.io/service-worker.js",
-        "scope": "/"
-    }
 }
