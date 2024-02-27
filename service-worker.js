@@ -1,12 +1,12 @@
 const CACHE_NAME = 'Majestic Alliance';
 const urlsToCache = [
-    '/',
-    '/index.html',
-    '/styles/main.css',
-    '/scripts/main.js',
-    '/images/icon.png',
-    '/images/icon-256.png',
-    '/images/icon-512.png'
+    '/doryanxs.github.io/',
+    '/doryanxs.github.io/index.html',
+    '/doryanxs.github.io/styles/main.css',
+    '/doryanxs.github.io/scripts/main.js',
+    '/doryanxs.github.io/images/icon.png',
+    '/doryanxs.github.io/images/icon-256.png',
+    '/doryanxs.github.io/images/icon-512.png'
 ];
 
 self.addEventListener('install', event => {
