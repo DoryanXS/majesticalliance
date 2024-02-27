@@ -1,31 +1,21 @@
-const CACHE_NAME = 'Majestic-Alliance';
+const CACHE_NAME = 'Majestic Alliance';
 const urlsToCache = [
-    '/majesticalliance.github.io/',
-    '/majesticalliance.github.io/index.html',
-    '/majesticalliance.github.io/styles/main.css',
-    '/majesticalliance.github.io/scripts/main.js',
-    '/majesticalliance.github.io/images/icon.png',
-    '/majesticalliance.github.io/images/icon-196.png',
-    '/majesticalliance.github.io/images/icon-512.png'
+    '/',
+    '/index.html',
+    '/styles/main.css',
+    '/scripts/main.js',
+    '/images/icon-144.png',
+    '/images/icon-192.png',
+    '/images/icon-196.png',
+    '/images/icon-512.png'
 ];
 
 self.addEventListener('install', event => {
     event.waitUntil(
-        caches.open(CACHE_NAME)
-            .then(cache => {
-                console.log('Attempting to cache resources:', urlsToCache);
-                return cache.addAll(urlsToCache);
-            })
-            .then(() => {
-                console.log('Cache installation successful');
-            })
-            .catch(error => {
-                console.error('Cache installation failed:', error);
-                throw error;
-            })
+    caches.open(CACHE_NAME)
+        .then(cache => cache.addAll(urlsToCache))
     );
 });
-
 
 self.addEventListener('fetch', event => {
     event.respondWith(
@@ -48,3 +38,4 @@ self.addEventListener('activate', event => {
         ))
     );
 });
+
