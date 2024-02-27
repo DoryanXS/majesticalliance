@@ -1,34 +1,34 @@
 {
     "name": "Majestic Alliance",
     "short_name": "MA",
-    "description": "Doryan Morales - Progresive Web Application",
-    "start_url": "/index.html",
+    "description": "Doryan Morales - Progressive Web Application",
+    "start_url": "/doryanxs.github.io/",
     "display": "fullscreen",
     "background_color": "#f33621",
     "theme_color": "#f33621",
     "icons": [
         {
-            "src": "/icon.png",
-            "sizes": "144x192",
+            "src": "/doryanxs.github.io/icon.png",
+            "sizes": "144x144",
             "type": "image/png"
         },
         {
-            "src": "/icon-256.png",
+            "src": "/doryanxs.github.io/icon-256.png",
             "sizes": "256x256",
             "type": "image/png"
         },
         {
-            "src": "/icon-512.png",
+            "src": "/doryanxs.github.io/icon-512.png",
             "sizes": "512x512",
             "type": "image/png"
         }
     ],
-    "scope": "/",
-    "orientation": "portrait",
+    "scope": "/doryanxs.github.io/",
+    "orientation": "any",
     "lang": "es",
     "prefer_related_applications": false,
     "serviceworker": {
-        "src": "/service-worker.js",
-        "scope": "/"
+        "src": "/doryanxs.github.io/service-worker.js",
+        "scope": "/doryanxs.github.io/"
     }
 }
