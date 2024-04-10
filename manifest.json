@@ -23,6 +23,23 @@
             "type": "image/png"
         }
     ],
+        "screenshots": [
+        {
+            "src": "/majesticalliance/images/S1.png",
+            "sizes": "1917x921",
+            "type": "image/png"
+        },
+        {
+            "src": "/majesticalliance/images/S2.png",
+            "sizes": "948x822",
+            "type": "image/png"
+        },
+        {
+            "src": "/majesticalliance/images/S3.png",
+            "sizes": "433x822",
+            "type": "image/png"
+        }
+    ],
     "scope": "/majesticalliance/",
     "orientation": "any",
     "lang": "es",
